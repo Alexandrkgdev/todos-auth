@@ -41,10 +41,6 @@ export class UsersService {
   // //   });
   // // }
   //
-  // async remove(id: string): Promise<void> {
-  //   const user = await this.findOne(id);
-  //   await user.destroy();
-  // }
 
 
   constructor(
@@ -60,10 +56,11 @@ export class UsersService {
     return this.userModel.create(user);
   }
 
-  findOne(id: string): Promise<User> {
+  findOne(username: string): Promise<User> {
+    console.log('searching db');
     return this.userModel.findOne({
       where: {
-        id,
+        userName: username,
       },
     });
   }
